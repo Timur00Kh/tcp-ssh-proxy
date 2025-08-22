@@ -18,6 +18,11 @@ RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config && \
     sed -i 's/#AuthorizedKeysFile/AuthorizedKeysFile/' /etc/ssh/sshd_config
 
+# Добавляем совместимые KEX алгоритмы для обычных клиентов
+RUN echo "KexAlgorithms curve25519-sha256,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group14-sha1" >> /etc/ssh/sshd_config && \
+    echo "Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc" >> /etc/ssh/sshd_config && \
+    echo "MACs hmac-sha1,hmac-md5" >> /etc/ssh/sshd_config
+
 # Создаем директорию для authorized_keys
 RUN mkdir -p /home/sshuser/.ssh && \
     chown -R sshuser:sshuser /home/sshuser/.ssh && \
