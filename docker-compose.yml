@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ssh-server:
+    build: .
+    ports:
+      - "2222:22"
+    volumes:
+      - ./id_rsa.pub:/home/sshuser/.ssh/authorized_keys
+    restart: unless-stopped
+    container_name: ssh-server
