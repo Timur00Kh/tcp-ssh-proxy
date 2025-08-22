@@ -27,7 +27,7 @@ RUN chown sshuser:sshuser /home/sshuser/.ssh/authorized_keys && \
     chmod 600 /home/sshuser/.ssh/authorized_keys
 
 # Экспозируем порт 22
-EXPOSE 22
+EXPOSE 22 9000
 
 # Запускаем SSH-сервер в foreground режиме
 CMD ["/usr/sbin/sshd", "-D", "-e"]

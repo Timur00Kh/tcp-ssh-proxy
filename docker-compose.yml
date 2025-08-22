@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - "2222:22"
+      - 9000
     volumes:
       - ./id_rsa.pub:/home/sshuser/.ssh/authorized_keys
     restart: unless-stopped
