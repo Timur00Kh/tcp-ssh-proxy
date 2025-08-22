@@ -4,6 +4,8 @@ FROM alpine:latest
 RUN apk add --no-cache openssh openssh-server-pam
 
 # Создаем директорию для SSH и пользователя
+# Генерируем ключи хоста для SSH
+RUN ssh-keygen -A
 RUN mkdir -p /var/run/sshd /home/sshuser/.ssh
 
 # Создаем пользователя для SSH-подключений
