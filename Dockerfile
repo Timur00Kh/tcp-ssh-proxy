@@ -37,7 +37,7 @@ RUN chown sshuser:sshuser /home/sshuser/.ssh/authorized_keys && \
 EXPOSE 22 9000
 
 # Запускаем SSH-сервер в foreground режиме
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+CMD ["/usr/sbin/sshd", "-D", "-e", "-ddd"]
 
 
 
