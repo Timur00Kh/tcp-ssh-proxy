@@ -10,3 +10,4 @@ services:
       - ./id_rsa.pub:/home/sshuser/.ssh/authorized_keys
     restart: unless-stopped
     container_name: ssh-server
+
